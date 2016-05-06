@@ -5,7 +5,7 @@ nth_palindrome <- function(n){
   # Current number of palindromes
   current_pal<-10
   
-  # Maximum numbers to cycle through
+  # Maximum numbers to cycle through, this is the upper limit to set
   max_num <- 100000
   
   # Find the number of digits in the number
@@ -24,7 +24,11 @@ nth_palindrome <- function(n){
     k<-length(digits)
     j<-0
     
+    # allows the check to continue
     continue<-TRUE
+    
+    # while the right digit is not the same as the left or less, and while there are matches in the outer
+    # digits so far, continue
     while(k>1 && k>j && continue==TRUE){
       
       # j is the position on the left
@@ -33,13 +37,17 @@ nth_palindrome <- function(n){
       # if j and k values are a match, set the palindrome as temporarily true
       if(digits[j]==digits[k]){
         match<-TRUE
-        }
+      }
+      
+      # else if the values are not a match, then don't keep checking in the while loop
       else{
         match<-FALSE
         continue<-FALSE
       }
       k<-k-1
     }
+    
+    # if it found a palindrome, increase the current palindrome count by one
     if(match==TRUE){
       
       current_pal<- current_pal +1
@@ -48,24 +56,5 @@ nth_palindrome <- function(n){
       }
       print(digits)
     }
-    #if(length(digits)>1){
-      #if(digits[1]==digits[2]){
-        #print(digits)
-      #}
-    #}
-    #if(digits[1]==length(digits))
-    #cycle through and check if digits match
-    #for(k in 1:length(i)){
-      #print(k)
-      #if(digits[1]==digits[k]){
-       # print(k)
-       # print(digits)
-     # }
-     # else
-       # print("Not a match")
-    #}
-    
-    # Print out what the digits are and what the length is
-    #message("First digit:", digits[1], " Second digit:", digits[2], "Length:", length(digits))
-  }
+   }
 }
